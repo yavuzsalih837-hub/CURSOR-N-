@@ -53,16 +53,18 @@ export async function chatComplete(opts) {
   if (!key) throw new Error("OpenAI API key not configured");
 
   const body = {
-    model: loadModel(),
-    messages: opts.messages,
-    temperature: opts.temperature ?? 0.3,
-    ...(opts.responseFormatJson ? { response_format: { type: "json_object" } } : {}),
-  };
+  model: loadModel(),
+  messages: opts.messages,
+  stream: false,
+  options: {
+    temperature: opts.temperature ?? 0.3
+  }
+};
 
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+  const res = await fetch("http://localhost:11434/api/chat", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${key}`,
+    
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
@@ -74,7 +76,8 @@ export async function chatComplete(opts) {
   }
 
   const data = await res.json();
-  const text = data?.choices?.[0]?.message?.content;
-  if (typeof text !== "string") throw new Error("Empty model response");
-  return text;
+const text = data?.message?.content || data?.choices?.[0]?.message?.content;
+
+if (typeof text !== "string") throw new Error("Empty model response");
+return text;
 }
