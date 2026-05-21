@@ -266,3 +266,22 @@ function init() {
 }
 
 init();
+
+const { autonomousTaskExecutor } = require("./kernel/autonomous-task-executor");
+
+const missionBtn = document.getElementById("mission-btn");
+const missionInput = document.getElementById("mission-input");
+
+if (missionBtn && missionInput) {
+  missionBtn.addEventListener("click", async () => {
+    const task = missionInput.value;
+
+    console.log("[UI] Mission:", task);
+
+    const result = await autonomousTaskExecutor(task);
+
+    console.log(result);
+
+    alert("Mission completed");
+  });
+}
