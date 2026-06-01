@@ -1,139 +1,236 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neural Grid · Agent OS</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgentOS - Neural Grid</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#050816;
+      color:white;
+      height:100vh;
+      overflow:hidden;
+    }
+
+    .container{
+      display:flex;
+      width:100%;
+      height:100vh;
+    }
+
+    .sidebar{
+      width:240px;
+      background:#08111f;
+      border-right:1px solid #0f2a44;
+      padding:20px;
+    }
+
+    .logo{
+      font-size:24px;
+      font-weight:bold;
+      margin-bottom:40px;
+      color:#00c3ff;
+    }
+
+    .menu-item{
+      padding:14px;
+      border:1px solid #12314f;
+      border-radius:10px;
+      margin-bottom:12px;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    .menu-item:hover{
+      background:#0f1d30;
+    }
+
+    .main{
+      flex:1;
+      padding:30px;
+    }
+
+    .title{
+      font-size:42px;
+      font-weight:bold;
+      margin-bottom:10px;
+    }
+
+    .subtitle{
+      color:#8aa4c2;
+      margin-bottom:30px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .card{
+      border:1px solid #12314f;
+      border-radius:16px;
+      padding:20px;
+      background:#08111f;
+    }
+
+    .card-title{
+      font-size:22px;
+      margin-bottom:20px;
+      color:#00c3ff;
+    }
+
+    textarea{
+      width:100%;
+      height:180px;
+      background:#050816;
+      border:1px solid #12314f;
+      border-radius:12px;
+      padding:15px;
+      color:white;
+      resize:none;
+      font-size:16px;
+      margin-bottom:20px;
+    }
+
+    button{
+      background:#00c3ff;
+      border:none;
+      color:black;
+      padding:14px 22px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:bold;
+      font-size:15px;
+      transition:0.2s;
+    }
+
+    button:hover{
+      transform:scale(1.03);
+    }
+
+    #telemetry{
+      margin-top:20px;
+      background:#050816;
+      border:1px solid #12314f;
+      border-radius:12px;
+      padding:15px;
+      min-height:200px;
+      overflow:auto;
+    }
+
+    .log{
+      margin-bottom:12px;
+      padding:10px;
+      background:#0d1726;
+      border-radius:8px;
+    }
+
+    .success{
+      color:lime;
+    }
+
+    .error{
+      color:red;
+    }
+
+    .memory-box{
+      min-height:300px;
+      background:#050816;
+      border:1px solid #12314f;
+      border-radius:12px;
+      padding:15px;
+    }
+
+  </style>
 </head>
+
 <body>
-  <div class="ng-grid-bg" aria-hidden="true"></div>
-  <div class="ng-shell">
-    <aside class="ng-rail">
-      <div class="ng-brand">
-        <span class="ng-brand__sigil" aria-hidden="true">◈</span>
-        <div>
-          <div class="ng-brand__title">Neural Grid</div>
-          <div class="ng-brand__sub">Multi-agent kernel</div>
-        </div>
-      </div>
-      <nav class="ng-nav" aria-label="Primary">
-        <button type="button" class="ng-nav__btn is-active" data-view="command">Command</button>
-        <button type="button" class="ng-nav__btn" data-view="settings">Neural config</button>
-      </nav>
-      <div class="ng-rail__meta">
-        <span class="ng-chip">Session local</span>
-        <span class="ng-chip ng-chip--dim">Offline-capable</span>
-      </div>
-    </aside>
 
-    <div class="ng-main">
-      <header class="ng-top">
-        <div>
-          <h1 class="ng-top__title" id="view-title">Command center</h1>
-          <p class="ng-top__sub">Manager routes missions · specialists execute · memory persists · channels stream live.</p>
-        </div>
-        <div class="ng-top__stats">
-          <div class="ng-stat">
-            <span class="ng-stat__label">Queue depth</span>
-            <span class="ng-stat__val mono" id="stat-queue">0</span>
-          </div>
-          <div class="ng-stat">
-            <span class="ng-stat__label">Memory entries</span>
-            <span class="ng-stat__val mono" id="stat-memory">0</span>
-          </div>
-          <div class="ng-stat">
-            <span class="ng-stat__label">Telemetry lines</span>
-            <span class="ng-stat__val mono" id="stat-logs">0</span>
-          </div>
-        </div>
-      </header>
+<div class="container">
 
-      <section id="view-command" class="ng-view is-visible" aria-labelledby="view-title">
-        <div class="ng-strip">
-          <div class="ng-strip__head">
-            <h2 class="ng-panel-title">Agent mesh</h2>
-            <span class="ng-hint">Live status</span>
-          </div>
-          <div id="agent-grid" class="ng-agent-grid"></div>
-        </div>
+  <div class="sidebar">
 
-        <div class="ng-workspace">
-          <section class="ng-panel ng-panel--accent">
-            <div class="ng-panel__head">
-              <h2 class="ng-panel-title">Mission control</h2>
-              <span class="ng-hint">Natural language → routed execution</span>
-            </div>
-            <label class="ng-label" for="mission-input">Objective</label>
-            <textarea id="mission-input" class="ng-textarea" rows="5" placeholder="Describe the mission… e.g. ‘Research competitors for an AI CRM and draft a 3-email outreach angle.’"></textarea>
-            <label class="ng-check">
-              <input type="checkbox" id="opt-llm" />
-              <span>Use OpenAI for routing + specialist output (requires API key in Neural config)</span>
-            </label>
-            <div class="ng-actions">
-              <button type="button" class="ng-btn ng-btn--primary" id="btn-deploy">Deploy mission</button>
-              <span class="ng-hint" id="deploy-status"></span>
-            </div>
-            <div class="ng-subhead">Routing queue</div>
-            <div id="mission-queue" class="ng-queue"></div>
-          </section>
-
-          <section class="ng-panel">
-            <div class="ng-panel__head">
-              <h2 class="ng-panel-title">Live telemetry</h2>
-              <button type="button" class="ng-btn ng-btn--ghost" id="btn-clear-logs">Clear</button>
-            </div>
-            <div id="log-feed" class="ng-feed ng-feed--logs mono" aria-live="polite"></div>
-          </section>
-
-          <section class="ng-panel">
-            <div class="ng-panel__head">
-              <h2 class="ng-panel-title">Inter-agent channel</h2>
-              <button type="button" class="ng-btn ng-btn--ghost" id="btn-clear-comms">Clear</button>
-            </div>
-            <div id="comm-feed" class="ng-feed ng-feed--comms mono" aria-live="polite"></div>
-          </section>
-
-          <section class="ng-panel">
-            <div class="ng-panel__head">
-              <h2 class="ng-panel-title">Collective memory</h2>
-              <button type="button" class="ng-btn ng-btn--ghost" id="btn-clear-memory">Purge</button>
-            </div>
-            <div id="memory-feed" class="ng-feed ng-feed--memory mono"></div>
-          </section>
-        </div>
-      </section>
-
-      <section id="view-settings" class="ng-view" hidden>
-        <div class="ng-settings">
-          <section class="ng-panel">
-            <div class="ng-panel__head">
-              <h2 class="ng-panel-title">Neural API</h2>
-              <span class="ng-hint">Stored only in this browser</span>
-            </div>
-            <p class="ng-copy">
-              Optional. Without a key, missions still run using deterministic routing and offline specialist templates.
-              With a key, you get LLM routing (when enabled) and model-generated specialist outputs.
-            </p>
-            <label class="ng-label" for="api-key">OpenAI API key</label>
-            <input type="password" id="api-key" class="ng-input mono" autocomplete="off" placeholder="sk-…" />
-            <label class="ng-label" for="api-model">Model</label>
-            <input type="text" id="api-model" class="ng-input mono" placeholder="gpt-4o-mini" />
-            <div class="ng-actions">
-              <button type="button" class="ng-btn ng-btn--primary" id="btn-save-api">Save credentials</button>
-              <span class="ng-hint" id="api-save-status"></span>
-            </div>
-          </section>
-        </div>
-      </section>
+    <div class="logo">
+      NEURAL GRID
     </div>
+
+    <div class="menu-item">
+      Command Center
+    </div>
+
+    <div class="menu-item">
+      Agent Mesh
+    </div>
+
+    <div class="menu-item">
+      Memory System
+    </div>
+
+    <div class="menu-item">
+      Telemetry
+    </div>
+
   </div>
 
-  <div id="toast" class="ng-toast" role="status" aria-live="polite" hidden></div>
+  <div class="main">
 
-  <script type="module" src="js/app.js"></script>
+    <div class="title">
+      COMMAND CENTER
+    </div>
+
+    <div class="subtitle">
+      Jarvis Multi-Agent Operating System
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <div class="card-title">
+          Mission Control
+        </div>
+
+        <textarea
+          id="objective"
+          placeholder="Görev yaz..."
+        ></textarea>
+
+        <button id="deploy-btn">
+          Deploy Mission
+        </button>
+
+        <div id="telemetry"></div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-title">
+          Collective Memory
+        </div>
+
+        <div class="memory-box" id="memory-box">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="./js/app.js"></script>
+
 </body>
 </html>
