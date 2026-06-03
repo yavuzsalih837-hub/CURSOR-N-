@@ -13,6 +13,14 @@ const DB_PATH = path.join(__dirname, "db.json");
 // Global in-memory queue (persisted task states live in db.json as well)
 const taskQueue = [];
 
+const AGENT_MESH = [
+  "Jarvis General",
+  "Content Agent",
+  "Research Agent",
+  "Automation Agent",
+  "Sales Agent",
+];
+
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
@@ -168,6 +176,55 @@ function persistTask(task, { writeMemory = false } = {}) {
   }
 
   fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), "utf8");
+}
+
+function getMergedTasks() {
+  const db = loadDb();
+  const tasks = Array.isArray(db.tasks) ? [...db.tasks] : [];
+
+  taskQueue.forEach((queued) => {
+    const idx = tasks.findIndex((t) => t.id === queued.id);
+    if (idx >= 0) tasks[idx] = queued;
+    else tasks.push(queued);
+  });
+
+  return tasks;
+}
+
+function computeAgentMesh() {
+  const tasks = getMergedTasks();
+
+  return AGENT_MESH.map((name) => {
+    const agentTasks = tasks.filter((t) => t.selectedAgent === name);
+    const totalTasks = agentTasks.length;
+
+    const sorted = [...agentTasks].sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+    const latest = sorted[0] || null;
+    const lastTask = latest?.input || null;
+
+    let status = "IDLE";
+    const hasActive = agentTasks.some(
+      (t) => t.status === "QUEUED" || t.status === "RUNNING"
+    );
+
+    if (hasActive) {
+      status = "RUNNING";
+    } else if (
+      latest &&
+      (latest.status === "DONE" || latest.status === "FALLBACK_DONE")
+    ) {
+      status = "DONE";
+    }
+
+    return {
+      name,
+      status,
+      lastTask,
+      totalTasks,
+    };
+  });
 }
 
 function buildAgentPrompt(selectedAgent, input) {
@@ -334,6 +391,13 @@ app.get("/api/memory", (req, res) => {
   return res.json({
     success: true,
     memory,
+  });
+});
+
+app.get("/api/agents", (req, res) => {
+  return res.json({
+    success: true,
+    agents: computeAgentMesh(),
   });
 });
 
