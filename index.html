@@ -17,7 +17,7 @@
       background:#050816;
       color:white;
       height:100vh;
-      overflow:hidden;
+      overflow:auto;
     }
 
     .container{
@@ -150,6 +150,63 @@
       padding:15px;
     }
 
+    #task-queue{
+      margin-top:20px;
+      background:#050816;
+      border:1px solid #12314f;
+      border-radius:12px;
+      padding:15px;
+      min-height:200px;
+      overflow:auto;
+    }
+
+    .task-row{
+      margin-bottom:12px;
+      padding:12px;
+      border:1px solid #12314f;
+      border-radius:10px;
+      background:#0d1726;
+    }
+
+    .task-row:last-child{
+      margin-bottom:0;
+    }
+
+    .task-top{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+    }
+
+    .task-id{
+      color:#d7e7ff;
+      font-weight:bold;
+      font-size:13px;
+      word-break:break-word;
+    }
+
+    .task-status{
+      font-weight:bold;
+      font-size:13px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid #12314f;
+      background:#08111f;
+    }
+
+    .status-QUEUED{ color:#facc15; border-color:rgba(250,204,21,0.45); }
+    .status-RUNNING{ color:#00c3ff; border-color:rgba(0,195,255,0.45); }
+    .status-DONE{ color:#22c55e; border-color:rgba(34,197,94,0.45); }
+    .status-FALLBACK_DONE{ color:#f97316; border-color:rgba(249,115,22,0.55); }
+
+    .task-meta{
+      color:#8aa4c2;
+      font-size:13px;
+      line-height:1.45;
+    }
+
   </style>
 </head>
 
@@ -188,7 +245,7 @@
     </div>
 
     <div class="subtitle">
-      Jarvis Multi-Agent Operating System
+      Jarvis Core v0.3 · Task Queue System
     </div>
 
     <div class="grid">
@@ -222,6 +279,11 @@
 
         </div>
 
+      </div>
+
+      <div class="card">
+        <div class="card-title">TASK QUEUE</div>
+        <div id="task-queue">Loading tasks...</div>
       </div>
 
     </div>

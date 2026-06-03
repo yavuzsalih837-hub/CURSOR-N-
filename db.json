@@ -1,0 +1,68 @@
+{
+  "memory": [
+    {
+      "task": "Moda Şapka için 5 reklam fikri üret",
+      "selectedAgent": "Content Agent",
+      "category": "content",
+      "response": "1. **\"Her Tarzın Şapkası Burada!\"**  \n   - Farklı stillerde şapkalarla çeşitliliği vurgulayan, renkli ve dinamik bir kampanya.  \n\n2. **\"Güneşten Korun, Şıklıktan Ödün Verme!\"**  \n   - UV korumalı şapkaları öne çıkaran, yaz temalı sağlık ve moda odaklı reklam.  \n\n3. **\"Şapkasız Çıkma, Eksik Kalma!\"**  \n   - Günlük kombinlere şapkayla son dokunuşu teşvik eden minimalist bir yaklaşım.  \n\n4. **\"Limit Senin Hayal Gücün!\"****  \n   - Kişiye özel baskılı veya tasarım şapkalarla özgürlük mesajı veren kreatif reklam.  \n\n5. **\"Sezonun En Havalı Aksesuarı!\"**  \n   - Yeni sezon trendlerini öne çıkaran, influencer’larla iş birliği yapılan sosyal medya kampanyası.  \n\nKısa, hedef odaklı ve uygulanabilir fikirler! 🚀",
+      "timestamp": "2026-06-01T23:15:06.345Z",
+      "status": "success"
+    },
+    {
+      "type": "task_log",
+      "task": "Moda Şapka için 10 reklam fikri üret.",
+      "selectedAgent": "Content Agent",
+      "response": "1. **\"Tarza Dokunuş\"**: \"Her kıyafetin eksik parçası! %30 indirimle şimdi tamamlıyoruz.\"  \n2. **\"Güneşten Şıklık\"**: \"UV korumalı şapkalarla hem stil hem güvenlik.\"  \n3. **\"Sezonun İkonu\"**: \"Bu yazın trendi belli! Hemen keşfet.\"  \n4. **\"Anında Stil Yükselt\"**: \"1 şapka, 10 farklı kombin. Hemen dene!\"  \n5. **\"Sınırlı Seri\"**: \"El yapımı şapkalar - Stoklar tükenmeden!\"  \n6. **\"Hediye Paketi\"**: \"Sevdiklerine özel tasarım şapka + ücretsiz kargo.\"  \n7. **\"Sosyal Medya Challenge\"**: \"#ŞapkamlaTrend ol etiketiyle paylaş, anında %20 kazan.\"  \n8. **\"Koleksiyoner Avantajı\"**: \"3 al 2 öde kampanyası sadece bu hafta!\"  \n9. **\"VIP Üyelik\"**: \"Özel tasarımlara erken erişim + indirim kartı.\"  \n10. **\"Moda Danışmanı\"**: \"WhatsApp'tan fotoğraf at, sana en uygun şapkayı önerelim!\"  \n\n**Aksiyon:** Hemen bir tanesini seç, görsel taslağı ve hedef kitle analizini hazırlayalım. 🚀",
+      "timestamp": "2026-06-02T11:34:40.369Z",
+      "status": "DONE"
+    },
+    {
+      "type": "task_log",
+      "task": "ARPOS için diyetisyenlere outreach mesajı yaz.",
+      "selectedAgent": "Content Agent",
+      "response": "**Konu:** ARPOS ile Diyetisyenlikte Yeni Bir Dönem Başlıyor!  \n\nMerhaba [Diyetisyen Adı],  \n\nARPOS, sağlık ve beslenme alanında çalışan profesyoneller için özel olarak tasarlanmış yenilikçi bir çözüm sunuyor. Hastalarınızın beslenme programlarını kolayca yönetebilir, kişiselleştirilmiş öneriler sunabilir ve takip süreçlerini otomatikleştirebilirsiniz.  \n\nARPOS ile:  \n✅ Hastalarınızın verilerini tek bir platformda toplayın.  \n✅ Kişiye özel diyet planları oluşturun.  \n✅ Takip süreçlerini hızlandırın ve hasta memnuniyetini artırın.  \n\nSizi ARPOS’u denemeye davet ediyoruz. Ücretsiz demo için hemen [buraya tıklayın] veya bizimle iletişime geçin.  \n\nSağlıkla kalın,  \n[Adınız]  \nARPOS Ekibi  \n[İletişim Bilgileri]",
+      "timestamp": "2026-06-02T11:35:28.774Z",
+      "status": "DONE"
+    },
+    {
+      "type": "task_log",
+      "task": "n8n ile müşteri takip otomasyonu planla.",
+      "selectedAgent": "Automation Agent",
+      "response": "İşte basit ve etkili bir n8n müşteri takip otomasyonu planı:\n\n1. **Veri Toplama**  \n   - Google Forms/Typeform ile müşteri kayıt  \n   - Webhook ile web sitenizden lead yakalama  \n   - CSV import (eski müşteri listeleri için)\n\n2. **Veri İşleme**  \n   - n8n'de \"IF\" node'u ile lead scoring:  \n     ✓ Email varsa +10 puan  \n     ✓ Telefon varsa +20 puan  \n     ✓ Fiyat teklifi istemişse +30 puan  \n\n3. **CRM Entegrasyonu**  \n   - Pipedrive/Hubspot'a otomatik kayıt  \n   - WhatsApp/Telegram'a anında bildirim  \n\n4. **Takip Otomasyonu**  \n   - 24 saat sonra: Teşekkür maili  \n   - 3 gün sonra: Ürün bilgi PDF'i  \n   - 7 gün sonra: Özel indirim teklifi  \n\n5. **Raporlama**  \n   - Haftalık Google Sheets raporu  \n   - Aylık satış tahmini e-postası  \n\n**Başlangıç Adımları:**  \n1. n8n'de \"HTTP Request\" node'u kur  \n2. Basit bir Google Form oluştur  \n3. İlk workflow'u 1 saatte çalıştır  \n\nÖneri: Ücretsiz n8n.cloud hesabı açarak hemen test edebilirsiniz.",
+      "timestamp": "2026-06-02T11:36:27.889Z",
+      "status": "DONE"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task_1780400068921_144be041cc41e",
+      "input": "Moda Şapka için 10 reklam fikri üret.",
+      "selectedAgent": "Content Agent",
+      "category": "content",
+      "status": "DONE",
+      "result": "1. **\"Tarza Dokunuş\"**: \"Her kıyafetin eksik parçası! %30 indirimle şimdi tamamlıyoruz.\"  \n2. **\"Güneşten Şıklık\"**: \"UV korumalı şapkalarla hem stil hem güvenlik.\"  \n3. **\"Sezonun İkonu\"**: \"Bu yazın trendi belli! Hemen keşfet.\"  \n4. **\"Anında Stil Yükselt\"**: \"1 şapka, 10 farklı kombin. Hemen dene!\"  \n5. **\"Sınırlı Seri\"**: \"El yapımı şapkalar - Stoklar tükenmeden!\"  \n6. **\"Hediye Paketi\"**: \"Sevdiklerine özel tasarım şapka + ücretsiz kargo.\"  \n7. **\"Sosyal Medya Challenge\"**: \"#ŞapkamlaTrend ol etiketiyle paylaş, anında %20 kazan.\"  \n8. **\"Koleksiyoner Avantajı\"**: \"3 al 2 öde kampanyası sadece bu hafta!\"  \n9. **\"VIP Üyelik\"**: \"Özel tasarımlara erken erişim + indirim kartı.\"  \n10. **\"Moda Danışmanı\"**: \"WhatsApp'tan fotoğraf at, sana en uygun şapkayı önerelim!\"  \n\n**Aksiyon:** Hemen bir tanesini seç, görsel taslağı ve hedef kitle analizini hazırlayalım. 🚀",
+      "createdAt": "2026-06-02T11:34:28.921Z",
+      "completedAt": "2026-06-02T11:34:40.369Z"
+    },
+    {
+      "id": "task_1780400100755_fbe0b2a5021048",
+      "input": "ARPOS için diyetisyenlere outreach mesajı yaz.",
+      "selectedAgent": "Content Agent",
+      "category": "content",
+      "status": "DONE",
+      "result": "**Konu:** ARPOS ile Diyetisyenlikte Yeni Bir Dönem Başlıyor!  \n\nMerhaba [Diyetisyen Adı],  \n\nARPOS, sağlık ve beslenme alanında çalışan profesyoneller için özel olarak tasarlanmış yenilikçi bir çözüm sunuyor. Hastalarınızın beslenme programlarını kolayca yönetebilir, kişiselleştirilmiş öneriler sunabilir ve takip süreçlerini otomatikleştirebilirsiniz.  \n\nARPOS ile:  \n✅ Hastalarınızın verilerini tek bir platformda toplayın.  \n✅ Kişiye özel diyet planları oluşturun.  \n✅ Takip süreçlerini hızlandırın ve hasta memnuniyetini artırın.  \n\nSizi ARPOS’u denemeye davet ediyoruz. Ücretsiz demo için hemen [buraya tıklayın] veya bizimle iletişime geçin.  \n\nSağlıkla kalın,  \n[Adınız]  \nARPOS Ekibi  \n[İletişim Bilgileri]",
+      "createdAt": "2026-06-02T11:35:00.755Z",
+      "completedAt": "2026-06-02T11:35:28.774Z"
+    },
+    {
+      "id": "task_1780400177048_dca3586610fad",
+      "input": "n8n ile müşteri takip otomasyonu planla.",
+      "selectedAgent": "Automation Agent",
+      "category": "automation",
+      "status": "DONE",
+      "result": "İşte basit ve etkili bir n8n müşteri takip otomasyonu planı:\n\n1. **Veri Toplama**  \n   - Google Forms/Typeform ile müşteri kayıt  \n   - Webhook ile web sitenizden lead yakalama  \n   - CSV import (eski müşteri listeleri için)\n\n2. **Veri İşleme**  \n   - n8n'de \"IF\" node'u ile lead scoring:  \n     ✓ Email varsa +10 puan  \n     ✓ Telefon varsa +20 puan  \n     ✓ Fiyat teklifi istemişse +30 puan  \n\n3. **CRM Entegrasyonu**  \n   - Pipedrive/Hubspot'a otomatik kayıt  \n   - WhatsApp/Telegram'a anında bildirim  \n\n4. **Takip Otomasyonu**  \n   - 24 saat sonra: Teşekkür maili  \n   - 3 gün sonra: Ürün bilgi PDF'i  \n   - 7 gün sonra: Özel indirim teklifi  \n\n5. **Raporlama**  \n   - Haftalık Google Sheets raporu  \n   - Aylık satış tahmini e-postası  \n\n**Başlangıç Adımları:**  \n1. n8n'de \"HTTP Request\" node'u kur  \n2. Basit bir Google Form oluştur  \n3. İlk workflow'u 1 saatte çalıştır  \n\nÖneri: Ücretsiz n8n.cloud hesabı açarak hemen test edebilirsiniz.",
+      "createdAt": "2026-06-02T11:36:17.048Z",
+      "completedAt": "2026-06-02T11:36:27.889Z"
+    }
+  ]
+}
